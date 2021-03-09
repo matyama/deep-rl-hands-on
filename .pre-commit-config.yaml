@@ -1,0 +1,32 @@
+---
+repos:
+        - repo: https://github.com/ambv/black
+          rev: 20.8b1
+          hooks:
+                  - id: black
+                    args: ['--config', './pyproject.toml']
+                    language_version: python3.8
+
+        - repo: https://github.com/timothycrosley/isort
+          rev: 5.6.4
+          hooks:
+                  - id: isort
+
+        - repo: https://github.com/life4/flakehell
+          rev: v.0.7.0
+          hooks:
+                  - id: flakehell
+                    # TODO: remove files once .ipynb files are fine
+                    files: \.(md|py|rst|yaml|yml)$
+
+        - repo: https://github.com/pre-commit/pre-commit-hooks
+          rev: v2.5.0
+          hooks:
+                  - id: check-merge-conflict
+                  - id: check-added-large-files
+                  - id: detect-private-key
+                  - id: end-of-file-fixer
+                  - id: mixed-line-ending
+                  - id: check-executables-have-shebangs
+                  - id: check-symlinks
+                  - id: trailing-whitespace
