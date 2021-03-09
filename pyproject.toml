@@ -30,6 +30,7 @@ flake8-markdown = "*"
 flake8-mutable = "*"
 flakehell = "*"
 lckr-jupyterlab-variableinspector = "*"
+nbqa = "*"
 pre-commit = "*"
 
 [tool.black]
@@ -38,7 +39,7 @@ target-version = ['py38']
 skip-string-normalization = 'true'
 
 [tool.flakehell]
-exclude = [".ipynb_checkpoints", "**/.ipynb_checkpoints", "notebooks"]
+exclude = [".ipynb_checkpoints", "**/.ipynb_checkpoints", "*.ipynb"]
 format = "grouped"
 max_line_length = 79
 show_source = true
@@ -46,7 +47,6 @@ show_source = true
 [tool.flakehell.plugins]
 "flake8-*" = ["+*"]
 mccabe = ["+*"]
-pandas-vet = ["+*", "-PD901"]
 pycodestyle = ["+*", "-D400"]
 pyflakes = ["+*"]
 pylint = ["+*"]

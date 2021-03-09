@@ -1,32 +1,46 @@
 ---
 repos:
-        - repo: https://github.com/ambv/black
-          rev: 20.8b1
-          hooks:
-                  - id: black
-                    args: ['--config', './pyproject.toml']
-                    language_version: python3.8
+    - repo: https://github.com/nbQA-dev/nbQA
+      rev: 0.5.9
+      hooks:
+              - id: nbqa-black
+                additional_dependencies: ['black==20.8b1']
+                args: ['--nbqa-mutate']
 
-        - repo: https://github.com/timothycrosley/isort
-          rev: 5.6.4
-          hooks:
-                  - id: isort
+              - id: nbqa-isort
+                additional_dependencies: ['isort==5.7.0']
+                args: ['--nbqa-mutate']
 
-        - repo: https://github.com/life4/flakehell
-          rev: v.0.7.0
-          hooks:
-                  - id: flakehell
-                    # TODO: remove files once .ipynb files are fine
-                    files: \.(md|py|rst|yaml|yml)$
+              - id: nbqa-flake8
+                additional_dependencies: ['flake8==3.8.4']
 
-        - repo: https://github.com/pre-commit/pre-commit-hooks
-          rev: v2.5.0
-          hooks:
-                  - id: check-merge-conflict
-                  - id: check-added-large-files
-                  - id: detect-private-key
-                  - id: end-of-file-fixer
-                  - id: mixed-line-ending
-                  - id: check-executables-have-shebangs
-                  - id: check-symlinks
-                  - id: trailing-whitespace
+    - repo: https://github.com/ambv/black
+      rev: 20.8b1
+      hooks:
+              - id: black
+                args: ['--config', './pyproject.toml']
+                language_version: python3.8
+
+    - repo: https://github.com/timothycrosley/isort
+      rev: 5.7.0
+      hooks:
+              - id: isort
+
+    - repo: https://github.com/life4/flakehell
+      rev: v.0.7.0
+      hooks:
+              - id: flakehell
+                # Ignore .ipynb files as these will be checked by nbqa
+                files: \.(md|py|rst|yaml|yml)$
+
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v2.5.0
+      hooks:
+              - id: check-merge-conflict
+              - id: check-added-large-files
+              - id: detect-private-key
+              - id: end-of-file-fixer
+              - id: mixed-line-ending
+              - id: check-executables-have-shebangs
+              - id: check-symlinks
+              - id: trailing-whitespace
