@@ -1,13 +1,12 @@
-.PHONY: fmt fmt-code fmt-nb lint lint-code lint-nb setup system-libs
+.PHONY: fmt fmt-code fmt-nb lint lint-code lint-nb setup system-libs xjl
 
 system-libs:
-	sudo apt install -y libglu1-mesa xvfb
+	sudo apt install -y ffmpeg libglu1-mesa xvfb
 
 setup: system-libs
 	poetry env use python3.8
 	poetry install
 	poetry run jupyter labextension install @jupyter-widgets/jupyterlab-manager
-
 
 fmt-code:
 	isort .
@@ -26,3 +25,6 @@ lint-nb:
 	nbqa flake8 .
 
 lint: lint-code lint-nb
+
+xjl:
+	xvfb-run -s "-screen 0 640x480x24" jupyter lab --ContentsManager.allow_hidden=True
