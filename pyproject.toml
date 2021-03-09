@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "deep-rl-hands-on"
+version = "0.1.0"
+description = "Examples and exercises from Deep Reinforcement Learning Hands-On"
+authors = ["Martin Matyasek <martin.matyasek@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+gym = { version = "*", extras = ["atari"] }
+jupyter = "*"
+jupyterlab = "*"
+matplotlib = "*"
+nltk = "*"
+numpy = "*"
+opencv-python = "*"
+ptan = "*"
+pytorch-ignite = "*"
+tensorflow = "*"
+tensorboardX = "*"
+torch = "*"
+torchvision = "*"
+
+[tool.poetry.dev-dependencies]
+lckr-jupyterlab-variableinspector = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0a5"]
+build-backend = "poetry.core.masonry.api"

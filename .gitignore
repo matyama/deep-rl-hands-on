@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Environment configuration
+.envrc
+
+# Poetry
+poetry.lock
