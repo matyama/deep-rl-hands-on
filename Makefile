@@ -1,4 +1,7 @@
-.PHONY: fmt fmt-code fmt-nb lint lint-code lint-nb setup system-libs xjl
+.PHONY: clean fmt fmt-code fmt-nb lint lint-code lint-nb setup system-libs tb xjl
+
+clean:
+	rm -rf recording runs
 
 system-libs:
 	sudo apt install -y ffmpeg libglu1-mesa xvfb
@@ -25,6 +28,12 @@ lint-nb:
 	nbqa flake8 .
 
 lint: lint-code lint-nb
+
+runs:
+	mkdir -p runs
+
+tb: runs
+	tensorboard --logdir runs
 
 xjl:
 	xvfb-run -s "-screen 0 640x480x24" jupyter lab --ContentsManager.allow_hidden=True
