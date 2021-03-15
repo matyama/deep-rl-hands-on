@@ -1,7 +1,7 @@
 .PHONY: clean fmt fmt-code fmt-nb lint lint-code lint-nb setup system-libs tb xjl
 
 clean:
-	rm -rf recording runs
+	rm -rf data recording runs
 
 system-libs:
 	sudo apt install -y ffmpeg libglu1-mesa xvfb
@@ -28,6 +28,9 @@ lint-nb:
 	nbqa flake8 .
 
 lint: lint-code lint-nb
+
+data:
+	mkdir -p data
 
 runs:
 	mkdir -p runs

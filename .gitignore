@@ -135,5 +135,6 @@ dmypy.json
 poetry.lock
 
 # Data
+data/
 recording/
 runs/
